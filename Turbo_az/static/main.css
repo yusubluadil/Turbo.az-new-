@@ -1,0 +1,22 @@
+#all_products {
+  display: inline-block;
+  margin-left: 30px;
+  margin-top: 20px;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+img {
+  height: 200px;
+}
+
+#li_in_all {
+  text-align: center;
+}
+
+#a_in_all:hover {
+  text-decoration: none;
+}
+
+#all_products:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}

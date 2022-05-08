@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+<div class="card" style="width: 70%; position: relative; left: 200px">
+  <img src="/media/{{ product.product_img }}" style="height: 500px" class="card-img-top" alt="{{ product.product_name }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.category }}-{{ product.product_name }}-{{ product.product_description }}</h5>
+    <h4 class="card-title">{{ product.product_price }}AZN</h4>
+  </div>
+</div>
+
+
+{% endblock content %}

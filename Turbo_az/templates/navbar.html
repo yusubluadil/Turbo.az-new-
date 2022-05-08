@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-primary bg-light">
+  <a class="navbar-brand" href="{% url 'index' %}">Turbo.az</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      {% if user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'user_logout' %}">Çıxış</a>
+      </li>
+      {% else %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'user_login' %}">Daxil ol</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'user_register' %}">Qeydiyyatdan keç</a>
+      </li>
+      {% endif %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'selected_product' %}">Seçilmişlər</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          Filtr
+        </a>
+        <div class="dropdown-menu" style="width: 600px; text-align: center;" aria-labelledby="navbarDropdown">
+          <table class="table">
+            <tbody>
+              {% for category in categories  %}
+              <tr>
+                <td><a href="{% url 'category_detail' category.pk %}"> {{ category.category_name }} </a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </li>
+      {% if user.is_authenticated %}
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'img' %}">Yeni elan</a>
+      </li>
+      {% endif %}
+    </ul>
+    <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'search_product' %}">
+
+      {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" placeholder="Axtar" aria-label="Search" name="searched">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Axtar</button>
+    </form>
+  </div>
+</nav>

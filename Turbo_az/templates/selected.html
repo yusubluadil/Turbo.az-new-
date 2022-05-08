@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+
+{% for product in products %}
+{% if product.choose is True %}
+<a href="{% url 'product_detail' product.pk %}" id="a_in_all" style="color: black">
+<div class="card " id="all_products" style="width: 18rem;">
+  <img src="/media/{{ product.product_img }}" class="card-img-top" alt="{{ product.product_name }}">
+  <div class="card-body">
+    <h4 class="card-title">{{ product.product_price }}AZN</h4>
+    <h5 class="card-title">{{ product.category }} {{ product.product_name }} {{ product.product_description }}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" id="li_in_all"><a href="{% url 'select_product' product.pk %}">Seç</a></li>
+  </ul>
+</div>
+</a>
+{% endif %}
+{% endfor %}
+
+{% endblock content %}

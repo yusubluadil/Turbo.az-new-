@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      {% for product in products %}
+      <a href="{% url 'product_detail' product.pk %}" id="a_in_all" style="color: black">
+      <div class="card " id="all_products" style="width: 18rem;">
+        <img src="/media/{{ product.product_img }}" class="card-img-top" alt="{{ product.product_name }}">
+        <div class="card-body">
+          <h4 class="card-title">{{ product.product_price }}AZN</h4>
+          <h5 class="card-title">{{ product.category }} {{ product.product_name }} {{ product.product_description }}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" id="li_in_all"><a href="{% url 'select_product' product.pk %}">Seç</a></li>
+        </ul>
+      </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+
+
+
+
+
+
+{% comment %} 
+<a href="#">
+  <div class="card bg-dark text-white" id="all_products">
+  
+    <img src="/media/{{ product.product_img }}" class="card-img"  alt="{{ product.product_name }}">
+    <div class="card-img-overlay">
+      <h5 class="card-title">{{ product.product_description }}</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">Last updated 3 mins ago</p>
+    </div>
+  </div>
+  </a> {% endcomment %}
